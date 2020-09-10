@@ -2,7 +2,7 @@ import random
 
 
 class Game:
-    Valids = ["rock", "paper", "scissors", "rocks", "papers", "scissor", "r", "p", "s"]
+    Valids = ["rock", "paper", "scissors", "r", "p", "s"]
 
     def get_user_item(self, usr_name, usr_input=None):
         """
@@ -16,7 +16,7 @@ class Game:
             usr_input = input(f"{usr_name} enter Rock, Paper or Scissors?\n").lower()
             if usr_input not in self.Valids or usr_input.isnumeric():
                 print(f"You didn't enter a valid choice, it has to be one of the below \n {self.Valids}")
-                self.get_user_item(usr_name)
+                usr_input = self.get_user_item(usr_name)
         else:
             print(f"{usr_name} enter Rock, Paper or Scissors?\n")
         return usr_input
@@ -33,7 +33,7 @@ class Game:
         """:return outcome [win, loss, draw]
         """
         outcome = "loss"
-        if user_item == computer_item:
+        if user_item == computer_item or user_item == "r" and computer_item == "rock" or user_item == "p" and computer_item == "paper" or user_item == "s" and computer_item == "scissors":
             outcome = "draw"
         else:
             if user_item == "rock" and computer_item == "scissors" or user_item == "r" and computer_item == "scissors" or user_item == "rocks" and computer_item == "scissors":
