@@ -1,8 +1,11 @@
 from game import *
+
+
 class RPS:
     Results = {'Win': 0, 'Loss': 0, 'Draw': 0}
     # results_print = print(f"Win : {Results['Win']}")
     results_game = ''
+
     def update_results(self):
         if self.results_game == 'win':
             self.Results["Win"] += 1
@@ -13,16 +16,16 @@ class RPS:
 
     def print_results(self):
         if self.results_game == 'win':
-            print(self.Results)
+            print(f"Win: {self.Results['Win']}\nLoss: {self.Results['Loss']}\nDraw: {self.Results['Draw']}\n " )
         elif self.results_game == 'loss':
-            print(self.Results)
+            print(f"Win: {self.Results['Win']}\nLoss: {self.Results['Loss']}\nDraw: {self.Results['Draw']}\n " )
         elif self.results_game == 'draw':
-            print(self.Results)
+            print(f"Win: {self.Results['Win']}\nLoss: {self.Results['Loss']}\nDraw: {self.Results['Draw']}\n " )
 
     def Play_again(self):
-        play_again = str(input("Do you want to play again ? y or n")).lower()
+        play_again = (input("Do you want to play again ? y or n")).lower()
         while play_again != 'y' and play_again != 'n':
-            play_again = str(input("It must be 'y' or 'n' ")).lower()
+            play_again = (input("It must be 'y' or 'n' ")).lower()
         else:
             if play_again == 'y':
                 print("Let's Play again!")
@@ -37,9 +40,9 @@ class RPS:
                 self.get_user_menu_choice()
 
     def get_user_menu_choice(self):
-        users_choice = str(input("Do you want to play (p)\nOr show results (s)\nOr exit the game (e) ?")).lower()
+        users_choice = (input("Do you want to play (p)\nOr show results (s)\nOr exit the game (e) ?")).lower()
         while users_choice != 'p' and users_choice != 's' and users_choice != 'e':
-            users_choice = str(input("It must be 'p' or 's' or 'e' "))
+            users_choice = (input("It must be 'p' or 's' or 'e' ")).lower()
             # print("Menu:\n")
         else:
             if users_choice == 'p':
@@ -56,7 +59,7 @@ class RPS:
                     self.get_user_menu_choice()
 
                 else:
-                    print('Here are your results:\n')
+                    print('\npHere are your results:')
                     self.print_results()
                     self.get_user_menu_choice()
 
