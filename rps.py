@@ -20,9 +20,9 @@ class RPS:
             print(self.Results)
 
     def Play_again(self):
-        play_again = str(input("Do you want to play again ? y or n")).lower()
+        play_again = (input("Do you want to play again ? y or n")).lower()
         while play_again != 'y' and play_again != 'n':
-            play_again = str(input("It must be 'y' or 'n' ")).lower()
+            play_again = (input("It must be 'y' or 'n' ")).lower()
         else:
             if play_again == 'y':
                 print("Let's Play again!")
@@ -37,9 +37,9 @@ class RPS:
                 self.get_user_menu_choice()
 
     def get_user_menu_choice(self):
-        users_choice = str(input("Do you want to play (p)\nOr show results (s)\nOr exit the game (e) ?")).lower()
+        users_choice = (input("Do you want to play (p)\nOr show results (s)\nOr exit the game (e) ?")).lower()
         while users_choice != 'p' and users_choice != 's' and users_choice != 'e':
-            users_choice = str(input("It must be 'p' or 's' or 'e' "))
+            users_choice = (input("It must be 'p' or 's' or 'e' ")).lower()
             # print("Menu:\n")
         else:
             if users_choice == 'p':
