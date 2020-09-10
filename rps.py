@@ -1,8 +1,11 @@
 from game import *
+
+
 class RPS:
     Results = {'Win': 0, 'Loss': 0, 'Draw': 0}
     # results_print = print(f"Win : {Results['Win']}")
     results_game = ''
+
     def update_results(self):
         if self.results_game == 'win':
             self.Results["Win"] += 1

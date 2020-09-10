@@ -4,14 +4,7 @@ import random
 class Game:
     Valids = ["rock", "paper", "scissors", "rocks", "papers", "scissor", "r", "p", "s"]
 
-    def get_user_item(self, usr_name, usr_input=None):
-        """
-        gets user input for rsp
-        :param usr_input: usr_input, NONE if User, if computer, Computer calls function with input
-        :arg usr_name
-        :return: returns user_input if valid
-        """
-
+    def get_user_item_c(self, usr_name, usr_input=None):
         if usr_input is None:
             usr_input = input(f"{usr_name} enter Rock, Paper or Scissors?\n").lower()
             if usr_input not in self.Valids or usr_input.isnumeric():
@@ -19,13 +12,32 @@ class Game:
                 self.get_user_item(usr_name)
         else:
             print(f"{usr_name} enter Rock, Paper or Scissors?\n")
-        return usr_input
+            return usr_input
+
+    def get_user_item(self, usr_name, usr_input=None):
+        """
+        gets user input for rsp
+        :param usr_input: usr_input, NONE if User, if computer, Computer calls function with input
+        :arg usr_name
+        :return: returns user_input if valid
+        """
+        usr_input = input(f"{usr_name}You have to put something ! (r,p,s)").lower()
+        while usr_input is None:
+            usr_input = input(f"{usr_name}You have to put something ! (r,p,s)").lower()
+        else:
+            if usr_input in self.Valids:
+                return usr_input
+            else:
+                print(f"You didn't enter a valid choice, it has to be one of the below \n {self.Valids}")
+                self.get_user_item(usr_name)
+                return usr_input
+
 
     def get_computer_item(self):
         """:return calls get_user_item and passes random choice from Valids"""
         valids = ['rock', 'paper', 'scissors']
         computer_input = random.choice(valids)
-        self.get_user_item("Computer", computer_input)
+        self.get_user_item_c("Computer", computer_input)
         return computer_input
 
     @staticmethod
