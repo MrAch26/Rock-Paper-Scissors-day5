@@ -16,11 +16,11 @@ class RPS:
 
     def print_results(self):
         if self.results_game == 'win':
-            print(self.Results)
+            print(f"Win: {self.Results['Win']}\nLoss: {self.Results['Loss']}\nDraw: {self.Results['Draw']}\n " )
         elif self.results_game == 'loss':
-            print(self.Results)
+            print(f"Win: {self.Results['Win']}\nLoss: {self.Results['Loss']}\nDraw: {self.Results['Draw']}\n " )
         elif self.results_game == 'draw':
-            print(self.Results)
+            print(f"Win: {self.Results['Win']}\nLoss: {self.Results['Loss']}\nDraw: {self.Results['Draw']}\n " )
 
     def Play_again(self):
         play_again = (input("Do you want to play again ? y or n")).lower()
@@ -59,7 +59,7 @@ class RPS:
                     self.get_user_menu_choice()
 
                 else:
-                    print('Here are your results:\n')
+                    print('\npHere are your results:')
                     self.print_results()
                     self.get_user_menu_choice()
 
