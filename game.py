@@ -13,8 +13,8 @@ class Game:
         """
 
         if usr_input is None:
-            usr_input = str(input(f"{usr_name} enter Rock, Paper or Scissors?\n")).lower()
-            if usr_input not in self.Valids or not usr_input.isalpha():
+            usr_input = input(f"{usr_name} enter Rock, Paper or Scissors?\n").lower()
+            if usr_input not in self.Valids or usr_input.isnumeric():
                 print(f"You didn't enter a valid choice, it has to be one of the below \n {self.Valids}")
                 self.get_user_item(usr_name)
         else:
