@@ -1,10 +1,9 @@
 class RPS:
-    # def __init__(self):
-    # results_win = the end return of game.py
     Results = {'Win': 0, 'Loss': 0, 'Draw': 0}
+    # results_print = print(f"Win : {Results['Win']}")
+    results_game = ''
 
     def print_results(self):
-
         if self.results_game == 'win':
             self.Results["Win"] += 1
             print(self.Results)
@@ -14,6 +13,7 @@ class RPS:
         elif self.results_game == 'draw':
             self.Results["Draw"] += 1
             print(self.Results)
+
     def Play_again(self):
         play_again = str(input("Do you want to play again ? y or n")).lower()
         while play_again != 'y' and play_again != 'n':
@@ -41,15 +41,21 @@ class RPS:
                 self.Play_again()
 
             elif users_choice == 's':
-                print('Here are your results')
-                self.print_results()
-                self.get_user_menu_choice()
+                if self.Results['Win'] == 0 and self.Results['Loss'] == 0 and self.Results['Draw'] == 0:
+                    print("You didn't Play yet !\n")
+                    self.print_results()
+                    self.get_user_menu_choice()
+
+                else:
+                    print('Here are your results:\n')
+                    self.print_results()
+                    self.get_user_menu_choice()
+
+
 
             elif users_choice == 'e':
+                print("Good Bye ! Thank you 👨🏿‍💻")
                 exit()
-
-
-
 
 
 def main():
