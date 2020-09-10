@@ -51,9 +51,9 @@ class Game:
         """
         you = self.get_user_item("Player 1")
         computer = self.get_computer_item()
-        outcome = self.get_game_result(you, computer)
-        print(f"You chose {you}, the computer chose {computer}! You scored a {outcome.upper()}")
-        return outcome
+        results_game = self.get_game_result(you, computer)
+        print(f"You chose {you}, the computer chose {computer}! You scored a {results_game.upper()}")
+        return results_game
 
 
 def main():
