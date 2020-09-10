@@ -1,4 +1,3 @@
-# import rps
 import random
 
 
@@ -24,7 +23,8 @@ class Game:
 
     def get_computer_item(self):
         """:return calls get_user_item and passes random choice from Valids"""
-        computer_input = random.choice(self.Valids)
+        valids = ['rock', 'paper', 'scissors']
+        computer_input = random.choice(valids)
         self.get_user_item("Computer", computer_input)
         return computer_input
 
@@ -36,11 +36,11 @@ class Game:
         if user_item == computer_item:
             outcome = "draw"
         else:
-            if user_item == "rock" and computer_item == "scissors":
+            if user_item == "rock" and computer_item == "scissors" or user_item == "r" and computer_item == "scissors" or user_item == "rocks" and computer_item == "scissors":
                 outcome = "win"
-            elif user_item == "paper" and computer_item == "rock":
+            elif user_item == "paper" and computer_item == "rock" or user_item == "p" and computer_item == "rock" or user_item == "papers" and computer_item == "rock":
                 outcome = "win"
-            elif user_item == "scissors" and computer_item == "paper":
+            elif user_item == "scissors" and computer_item == "paper" or user_item == "s" and computer_item == "paper" or user_item == "scissors" and computer_item == "paper":
                 outcome = "win"
         return outcome.lower()
 
