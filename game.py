@@ -1,37 +1,64 @@
 # import rps
 import random
 
+
 class Game:
+    Valids = ["rock", "paper", "scissors", "rocks", "papers", "scissor", "r", "p", "s"]
 
     def get_user_item(self, usr_name, usr_input=None):
         """
         gets user input for rsp
-        :arg usr_name, usr_input, NONE if User, if computer, Computer calls function with input
+        :param usr_input: usr_input, NONE if User, if computer, Computer calls function with input
+        :arg usr_name
         :return: returns user_input if valid
         """
-        valids = ["rock", "paper", "scissors"]
+
         if usr_input is None:
             usr_input = str(input(f"{usr_name} enter Rock, Paper or Scissors?\n")).lower()
-            if usr_input not in valids and usr_input.isalpha():
-                print(f"You didn't enter a valid choice, it has to be one of the below \n {valids}")
+            if usr_input not in self.Valids or not usr_input.isalpha():
+                print(f"You didn't enter a valid choice, it has to be one of the below \n {self.Valids}")
                 self.get_user_item(usr_name)
         else:
             print(f"{usr_name} enter Rock, Paper or Scissors?\n")
         return usr_input
 
     def get_computer_item(self):
-        """:return calls get_user_item and passes random choice from valids"""
-        valids = ["rock", "paper", "scissors"]
-        computer_input = random.choice(valids)
+        """:return calls get_user_item and passes random choice from Valids"""
+        computer_input = random.choice(self.Valids)
         self.get_user_item("Computer", computer_input)
         return computer_input
 
+    @staticmethod
+    def get_game_result(user_item, computer_item):
+        """:return outcome [win, loss, draw]
+        """
+        outcome = "loss"
+        if user_item == computer_item:
+            outcome = "draw"
+        else:
+            if user_item == "rock" and computer_item == "scissors":
+                outcome = "win"
+            elif user_item == "paper" and computer_item == "rock":
+                outcome = "win"
+            elif user_item == "scissors" and computer_item == "paper":
+                outcome = "win"
+        return outcome.lower()
+
+    def play(self):
+        """
+        Plays the game with computer opponent. prints and returns outcome
+        :return returns outcome of the round
+        """
+        you = self.get_user_item("Player 1")
+        computer = self.get_computer_item()
+        results_game = self.get_game_result(you, computer)
+        print(f"You chose {you}, the computer chose {computer}! You scored a {results_game.upper()}")
+        return results_game
 
 
 def main():
     game1 = Game()
-    game1.get_user_item("Player 1")
-    print(game1.get_computer_item())
+    game1.play()
 
 
 if __name__ == '__main__':
