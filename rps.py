@@ -1,17 +1,22 @@
+from game import *
 class RPS:
     Results = {'Win': 0, 'Loss': 0, 'Draw': 0}
     # results_print = print(f"Win : {Results['Win']}")
     results_game = ''
+    def update_results(self):
+        if self.results_game == 'win':
+            self.Results["Win"] += 1
+        elif self.results_game == 'loss':
+            self.Results["Loss"] += 1
+        elif self.results_game == 'draw':
+            self.Results["Draw"] += 1
 
     def print_results(self):
         if self.results_game == 'win':
-            self.Results["Win"] += 1
             print(self.Results)
         elif self.results_game == 'loss':
-            self.Results["Loss"] += 1
             print(self.Results)
         elif self.results_game == 'draw':
-            self.Results["Draw"] += 1
             print(self.Results)
 
     def Play_again(self):
@@ -21,7 +26,9 @@ class RPS:
         else:
             if play_again == 'y':
                 print("Let's Play again!")
-                self.results_game = input('win loss draw')
+                game1 = Game()
+                self.results_game = game1.play()
+                self.update_results()
                 self.Play_again()
 
 
@@ -37,7 +44,9 @@ class RPS:
         else:
             if users_choice == 'p':
                 print("Lets play !")
-                self.results_game = input('win loss draw')
+                game1 = Game()
+                self.results_game = game1.play()
+                self.update_results()
                 self.Play_again()
 
             elif users_choice == 's':
